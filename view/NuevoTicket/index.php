@@ -18,7 +18,56 @@
 	<!-- Contenido -->
 	<div class="page-content">
 		<div class="container-fluid">
-			Blank page.
+            <header class="section-header">
+                <div class="tbl">
+                    <div class="tbl-row">
+                        <div class="tbl-cell">
+                            <h3>Nuevo Ticket</h3>
+                            <ol class="breadcrumb breadcrumb-simple">
+                                <li><a href="#">Home</a></li>
+                                <li class="active">Basic Inputs</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+			</header>
+            <div class="box-typical box-typical-padding">
+				<p>
+					Desde esta ventana podrá generar nuevos tickets de HelpDesk:
+				</p>
+
+				<h5 class="m-t-lg with-border">Ingresar información</h5>
+                    <div class="row">
+                        <form method="post" id="ticket_form">
+                            <input type="hidden" id="usu_id" name="usu_id" value="<?php echo $_SESSION["usu_id"] ?>">
+                            <div class="col-lg-6">
+                                <fieldset class="form-group">
+                                    <label class="form-label semibold" for="exampleInput">Categoría</label>
+                                    <select id="cat_id" name="cat_id" class="form-control">
+
+                                    </select>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset class="form-group">
+                                    <label class="form-label semibold" for="tick_titulo">Título</label>
+                                    <input type="text" class="form-control" id="tick_titulo" name="tick_titulo" placeholder="Ingrese título">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset class="form-group">
+                                    <label class="form-label semibold" for="tick_descrip">Descripción</label>
+                                    <div class="summernote-theme-1">
+                                        <textarea id="tick_descrip" name="tick_descrip" class="summernote" name="name"></textarea>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="submit" name="action" value="add" class="btn btn-rounded btn-inline btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+            </div>
 		</div>
 	</div>
 	<!-- Contenido -->
