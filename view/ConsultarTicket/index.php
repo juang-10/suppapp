@@ -39,7 +39,8 @@
 						<tr>
 							<th style="width: 10%;">Nro. Ticket</th>
 							<th style="width: 15%;">Categoría</th>
-							<th class="d-none d-sm-table-cell" style="width: 25%;">Nom</th>
+							<th class="d-none d-sm-table-cell" style="width: 25%;">Título</th>
+							<th class="d-none d-sm-table-cell" style="width: 25%;">Fecha Creación</th>
 							<th class="text-center" style="width: 15%;"></th>
 						</tr>
 					</thead>
