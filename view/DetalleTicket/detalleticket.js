@@ -11,6 +11,7 @@ $(document).ready(function() {
 
     $('#tickd_descrip').summernote({
         height: 150,
+        lang: "es-ES",
         callbacks: {
             onImageUpload: function(image) {
                 console.log("Image detect...");
