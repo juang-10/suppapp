@@ -82,7 +82,7 @@
                 
             </section>
 
-            <div class="box-typical box-typical-padding">
+            <div class="box-typical box-typical-padding" id="pnldetalle">
                 <p>
                     Ingrese su duda o consulta
                 </p>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-lg-12">
                         <button type="button" id="btnenviar" class="btn btn-rounded btn-inline btn-primary">Enviar</button>
-                        <button type="button" id="btncerrar" class="btn btn-rounded btn-inline btn-danger">Cerrar Ticket</button>
+                        <button type="button" id="btncerrarticket" class="btn btn-rounded btn-inline btn-warning">Cerrar Ticket</button>
                     </div>
                 </div>
             </div>

@@ -4,22 +4,8 @@ function init() {
 
 $(document).ready(function() {
     let tick_id = getUrlParameter('ID');
-    $.post("../../controller/ticket.php?op=listardetalle", { tick_id : tick_id }, function (data) {
-        $('#lbldetalle').html(data);
-    }); 
 
-    $.post("../../controller/ticket.php?op=mostrar", { tick_id : tick_id }, function (data) {
-        data = JSON.parse(data);
-        $('#lblestado').html(data.tick_estado);
-        $('#lblnomusuario').html(data.usu_nom +' '+data.usu_ape);
-        $('#lblfechcrea').html(data.fech_crea);
-        
-        $('#lblnomidticket').html("Detalle Ticket - "+data.tick_id);
-
-        $('#cat_nom').val(data.cat_nom);
-        $('#tick_titulo').val(data.tick_titulo);
-        $('#tickd_descripusu').summernote ('code',data.tick_descrip);
-    }); 
+    listardetalle(tick_id);
 
     $('#tickd_descrip').summernote({
         height: 400,
