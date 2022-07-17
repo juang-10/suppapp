@@ -68,42 +68,39 @@
                         ?>
                             <article class="activity-line-item box-typical">
                                 <div class="activity-line-date">
-                                    Monday<br/>
-                                    sep 8
+                                    <?php echo date("d/m/Y", strtotime($row["fech_crea"]))?>
                                 </div>
                                 <header class="activity-line-item-header">
                                     <div class="activity-line-item-user">
                                         <div class="activity-line-item-user-photo">
                                             <a href="#">
-                                                <img src="img/photo-64-2.jpg" alt="">
+                                                <img src="../../public/img/photo-64-2.jpg" alt="">
                                             </a>
                                         </div>
-                                        <div class="activity-line-item-user-name">Tim Colins</div>
-                                        <div class="activity-line-item-user-status">Developer, Palo Alto</div>
+                                        <div class="activity-line-item-user-name">
+                                            <?php echo $row['usu_nom'].' '.$row['usu_ape'];?>
+                                        </div>
+                                        <div class="activity-line-item-user-status">
+                                            <?php
+                                                if($row['rol_id']==1) {
+                                                    echo 'Usuario';
+                                                } else {
+                                                    echo 'Soporte';
+                                                }
+                                            ?>
+                                        </div>
                                     </div>
                                 </header>
                                 <div class="activity-line-action-list">
                                     <section class="activity-line-action">
-                                        <div class="time">10:40 AM</div>
-                                        <div class="cont">
-                                            <div class="cont-in">
-                                                <p>Started nes UI migration</p>
-                                                <ul class="meta">
-                                                    <li><a href="#">5 Comments</a></li>
-                                                    <li><a href="#">5 Likes</a></li>
-                                                </ul>
-                                            </div>
+                                        <div class="time">
+                                            <?php echo date("d/m/Y", strtotime($row["fech_crea"]));?>
                                         </div>
-                                    </section>
-                                    <section class="activity-line-action">
-                                        <div class="time">10:40 AM</div>
                                         <div class="cont">
                                             <div class="cont-in">
-                                                <p>Had a meeting about shopping cart experience, with Isobel Patterson, Josh Weller, Mark Taylor</p>
-                                                <ul class="meta">
-                                                    <li><a href="#">5 Comments</a></li>
-                                                    <li><a href="#">1 Likes</a></li>
-                                                </ul>
+                                                <p>
+                                                    <?php echo $row["tickd_descrip"];?>
+                                                </p>
                                             </div>
                                         </div>
                                     </section>
