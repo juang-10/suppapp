@@ -4,13 +4,25 @@ function init() {
 
 $(document).ready(function() {
     let tick_id = getUrlParameter('ID');
-    $.post("../../controller/ticket.php?op=listardetalle", {tick_id : tick_id}, function(data){
-        console.log(data)
-        $('#lbldetalle').html(data)
-    });
+    $.post("../../controller/ticket.php?op=listardetalle", { tick_id : tick_id }, function (data) {
+        $('#lbldetalle').html(data);
+    }); 
+
+    $.post("../../controller/ticket.php?op=mostrar", { tick_id : tick_id }, function (data) {
+        data = JSON.parse(data);
+        $('#lblestado').html(data.tick_estado);
+        $('#lblnomusuario').html(data.usu_nom +' '+data.usu_ape);
+        $('#lblfechcrea').html(data.fech_crea);
+        
+        $('#lblnomidticket').html("Detalle Ticket - "+data.tick_id);
+
+        $('#cat_nom').val(data.cat_nom);
+        $('#tick_titulo').val(data.tick_titulo);
+        $('#tickd_descripusu').summernote ('code',data.tick_descrip);
+    }); 
 
     $('#tickd_descrip').summernote({
-        height: 150,
+        height: 400,
         lang: "es-ES",
         callbacks: {
             onImageUpload: function(image) {
@@ -22,6 +34,12 @@ $(document).ready(function() {
             }
         },
     });
+
+    $('#tickd_descripusu').summernote({
+        height: 400,
+        lang: "es-ES",
+    });
+    $('#tickd_descripusu').summernote('disable')
 });
 
 let getUrlParameter = function getUrlParameter(sParam) {

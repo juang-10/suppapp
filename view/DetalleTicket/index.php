@@ -23,10 +23,10 @@
 				<div class="tbl">
 					<div class="tbl-row">
 						<div class="tbl-cell">
-							<h3>Detalle Ticket - 1</h3>
-                            <span class="label label-pill label-danger">Cerrado</span>
-                            <span class="label label-pill label-primary">Nombre del usuario</span>
-                            <span class="label label-pill label-default">99/999/9999</span>
+							<h3 id="lblnomidticket">Detalle Ticket - 1</h3>
+                            <div id="lblestado"></div>
+                            <span class="label label-pill label-primary" id="lblnomusuario"></span>
+                            <span class="label label-pill label-default" id="lblfechcrea"></span>
 							<ol class="breadcrumb breadcrumb-simple">
 								<li><a href="#">Home</a></li>
 								<li class="active">Detalle Ticket</li>
@@ -52,8 +52,10 @@
                     </div>
                     <div class="col-lg-12">
                         <fieldset class="form-group">
-                            <label class="form-label semibold" for="cat_nom">Descripción</label>
-                            <input type="text" class="form-control" id='cat_nom'>
+                            <label class="form-label semibold" for="tickd_descripusu">Descripción</label>
+                            <div class="summernote-theme-1">
+                                <textarea id="tickd_descripusu" name="tickd_descripusu" class="summernote" name="name"></textarea>
+                            </div>
                         </fieldset>
                     </div>
                 </div>
