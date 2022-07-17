@@ -7,11 +7,21 @@ function init() {
 $(document).ready(function() {
     $('#tick_descrip').summernote({
         height: 150,
+        callbacks: {
+            onImageUpload: function(image) {
+                console.log("Image detect...");
+                myimagetreat(image[0]);
+            },
+            onPaste: function (e) {
+                console.log("Text detect...");
+            }
+        },
     });
 
     $.post("../../controller/categoria.php?op=combo",function(data, status){
         $('#cat_id').html(data);
     });
+
 });
 
 function guardaryeditar(e) {
