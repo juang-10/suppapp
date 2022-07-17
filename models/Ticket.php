@@ -67,7 +67,7 @@
             return $resultado=$sql->fetchAll();
         }
 
-        public function listar_ticket_detalle_x_ticket($tick_id){
+        public function listar_ticketdetalle_x_ticket($tick_id){
             $conectar= parent::conexion();
             parent::set_names();
             $sql="SELECT
