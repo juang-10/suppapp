@@ -1,14 +1,20 @@
 var tabla;
-let usu_id = $('#user_idx').val();
-let rol_id = $('#rol_idx').val();
+var usu_id =  $('#user_idx').val();
+var rol_id =  $('#rol_idx').val();
 
-function init() {
-
+function init(){
+    $("#ticket_form").on("submit",function(e){
+        guardar(e);	
+    });
 }
 
-$(document).ready(function() {
+$(document).ready(function(){
 
-    if(rol_id == 1) {
+    $.post("../../controller/usuario.php?op=combo", function (data) {
+        $('#usu_asig').html(data);
+    });
+
+    if (rol_id==1){
         tabla=$('#ticket_data').dataTable({
             "aProcessing": true,
             "aServerSide": true,
@@ -25,8 +31,8 @@ $(document).ready(function() {
             "ajax":{
                 url: '../../controller/ticket.php?op=listar_x_usu',
                 type : "post",
-                dataType : "json",
-                data:{ usu_id : usu_id},			
+                dataType : "json",	
+                data:{ usu_id : usu_id },						
                 error: function(e){
                     console.log(e.responseText);	
                 }
@@ -61,7 +67,7 @@ $(document).ready(function() {
                 }
             }     
         }).DataTable(); 
-    } else {
+    }else{
         tabla=$('#ticket_data').dataTable({
             "aProcessing": true,
             "aServerSide": true,
@@ -78,7 +84,7 @@ $(document).ready(function() {
             "ajax":{
                 url: '../../controller/ticket.php?op=listar',
                 type : "post",
-                dataType : "json",
+                dataType : "json",						
                 error: function(e){
                     console.log(e.responseText);	
                 }
@@ -114,12 +120,38 @@ $(document).ready(function() {
             }     
         }).DataTable(); 
     }
-    
-     
+
 });
 
-function ver(tick_id) {
-    window.open('http://localhost:80/PERSONAL_HelpDesk/view/DetalleTicket/?ID='+ tick_id +'')
+function ver(tick_id){
+    window.open('http://localhost:90/PERSONAL_HelpDesk/view/DetalleTicket/?ID='+ tick_id +'');
+}
+
+function asignar(tick_id){
+    $.post("../../controller/ticket.php?op=mostrar", {tick_id : tick_id}, function (data) {
+        data = JSON.parse(data);
+        $('#tick_id').val(data.tick_id);
+
+        $('#mdltitulo').html('Asignar Agente');
+        $("#modalasignar").modal('show');
+    });
+ 
+}
+
+function guardar(e){
+    e.preventDefault();
+	var formData = new FormData($("#ticket_form")[0]);
+    $.ajax({
+        url: "../../controller/ticket.php?op=asignar",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(datos){
+            $("#modalasignar").modal('hide');
+            $('#ticket_data').DataTable().ajax.reload();
+        }
+    });
 }
 
 init();
