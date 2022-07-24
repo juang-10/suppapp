@@ -1,6 +1,6 @@
 <?php
     class Categoria extends Conectar{
-        
+
         public function get_categoria(){
             $conectar= parent::conexion();
             parent::set_names();
@@ -9,6 +9,6 @@
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
-        
+
     }
 ?>
