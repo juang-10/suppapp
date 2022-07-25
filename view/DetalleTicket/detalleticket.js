@@ -1,9 +1,9 @@
-function init() {
-
+function init(){
+   
 }
 
-$(document).ready(function() {
-    let tick_id = getUrlParameter('ID');
+$(document).ready(function(){
+    var tick_id = getUrlParameter('ID');
 
     listardetalle(tick_id);
 
@@ -18,18 +18,20 @@ $(document).ready(function() {
             onPaste: function (e) {
                 console.log("Text detect...");
             }
-        },
+        }
     });
 
     $('#tickd_descripusu').summernote({
         height: 400,
-        lang: "es-ES",
-    });
-    $('#tickd_descripusu').summernote('disable')
+        lang: "es-ES"
+    });  
+
+    $('#tickd_descripusu').summernote('disable');
+
 });
 
-let getUrlParameter = function getUrlParameter(sParam) {
-    let sPageURL = decodeURIComponent(window.location.search.substring(1)),
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
         sParameterName,
         i;
@@ -76,12 +78,7 @@ $(document).on("click","#btncerrarticket", function(){
             var usu_id = $('#user_idx').val();
             $.post("../../controller/ticket.php?op=update", { tick_id : tick_id,usu_id : usu_id }, function (data) {
 
-            });
-
-            $.post("../../controller/email.php?op=ticket_cerrado", {tick_id : tick_id}, function (data) {
-
-            });
-
+            }); 
 
             listardetalle(tick_id);
 
@@ -119,4 +116,4 @@ function listardetalle(tick_id){
     }); 
 }
 
-init()
+init();
